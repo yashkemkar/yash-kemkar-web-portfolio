@@ -1,0 +1,486 @@
+/*Variables for the main colours of the website*/
+:root {
+    --color-accent: #5eead4;
+    --color-highlight: #e2e8f0;
+    --background-accent: RGBA(45, 212, 191, .1 );
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/*Added to ensure smooth scroll to top*/
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 4rem 2rem;
+    display: grid; /*Setting a grid layout because essentially the idea of the design is two columns*/
+    grid-template-columns: repeat (1, minmax(0, 1fr)); /*This line creates the column template - we want it to repeat once (2 columns) and max width must be one fraction of the screen width so if one column, then 100% of the page width. If two columns then 50% of the page width.*/
+    gap: 6rem;   
+}
+
+p {
+    line-height: 1.5rem;
+}
+
+/*Wanted to get the highlight colour to be my accent colour, therefore had to make the text same as background so that it is attractive and readable*/
+a::selection, p::selection, h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
+    background-color: var(--color-accent);
+    color: #0f172a;
+}
+
+/*Setting the background colour to be fixed and reach to 0 for each corner - so it'll cover the whole screen*/
+.underlay {
+    position: fixed;
+    background-color: #172554;
+    inset: 0;
+    opacity: 0.15; /*Reducing opacity kind of makes the colour a bit darker and deeper*/
+}
+
+/*Setting the header, main and footer with a relative position anda z-index of 10 brings it forward. Any positive value must put it closer to the user.*/
+header,
+main,
+footer {
+    position: relative;
+    z-index: 10;
+}
+
+/*Using a max width to bring the items in the header all to one side - design choice*/
+header {
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 300px;
+}
+
+header h1,
+.lightText {
+    color: var(--color-highlight);
+}
+
+.accent-text {
+    color: var(--color-accent);
+}
+
+header a {
+    text-decoration: none;
+}
+
+header h1 {
+    font-weight: 600;
+}
+
+header h4{
+    font-weight: 400;
+}
+
+nav {
+    display: none;
+}
+
+nav a {
+    font-size: 0.9rem;
+}
+
+.social-links-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-link {
+    font-size: 1.5rem;
+    color: inherit;
+    gap: 2rem;
+    transition-duration: 200ms;
+}
+
+.social-link:hover {
+    color: var(--color-highlight)
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; /*This is nice to separate the sections spatially and create a break between the elements.*/
+
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /*Gap set to 2rem to keep same distance as padding between heading 2 and contents below - looks aesthetic */
+}
+
+section h2,
+.experience-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+section h2 {
+    text-transform: uppercase;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    padding: 1rem 0;
+    z-index: 2; /*positive z-index to bring it forward*/
+}
+
+.sticky-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #101a31;
+    opacity: 0.8;
+    z-index: -1; /*had to add negative one here because it wouldn't work with just positive assigned for the header*/
+}
+
+.about-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.about-contents p {
+    font-size: 1.1rem;
+}
+
+/*Anchor-text being used to make any links visible in the highlighted colour and no underline*/
+.anchor-text {
+    color: var(--color-highlight);
+    text-decoration: none;
+    transition-duration: 200ms;
+}
+
+/*Make it the accent colour when hovered just for a nice aesthetic touch*/
+.anchor-text:hover {
+    color: var(--color-accent)
+}
+
+#about,
+#experience,
+#projects {
+    scroll-margin-top: 6rem;
+  }
+
+.experience-contents,
+.project-contents {
+      display:flex;
+      flex-direction: column;
+      gap: 4rem;
+}
+
+.experience-card,
+.project-card {
+    display: grid; 
+    grid-template-columns: repeat (1, minmax(0, 1fr));
+}
+
+.experience-card {
+    gap: 0.5rem
+}
+
+.project-card {
+    gap: 1rem;
+    order: 2;
+}
+
+.card-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tenure {
+    opacity: 0.7;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.experience-card p {
+    font-size: 0.9rem;
+}
+
+.card-title{
+    color: var(--color-highlight);
+    text-decoration: none;
+    transition-duration: 200ms;
+}
+
+/*Make it the accent colour when hovered just for a nice aesthetic touch*/
+.card-title:hover {
+    color: var(--color-accent)
+}
+
+.card-title i {
+    transition-duration: 200ms;
+    padding-left:0.5rem;
+    vertical-align:text-bottom;
+    font-size: 0.8rem;
+}
+
+.card-title:hover i {
+  padding-left: 1rem;
+}
+
+.card-header {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.full-resume-link {
+    position: relative;
+    color: var(--color-highlight);
+    text-decoration: none;
+    transition-duration: 200ms;
+    margin-right: auto;
+}
+
+.full-resume-link span{
+    transition-duration: 200ms;
+}
+
+.full-resume-link:hover span {
+    padding-left: 0.5rem;
+}
+
+.full-resume-link::after {
+    content: '';  /*No content, but can add text later */
+    position: absolute; /*absolute so that it sits specifically pinned to the absolute location of x below/above the parent element of project-archive-link*/
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    bottom: 0;
+    background-color: transparent;
+    transition-duration: 200ms;
+}
+
+.full-resume-link:hover::after {
+    background: var(--color-accent);
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--color-accent);
+}
+
+.tag {
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--background-accent);
+}
+
+.tag p {
+    font-size: 0.8rem;
+}
+
+.project-image-container {
+    max-width:200px;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    order: 2;
+    border-radius: 0.25rem;
+}
+
+.project-image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.project-stat-link {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.project-archive-link {
+    position: relative;
+    color: var(--color-highlight);
+    text-decoration: none;
+    transition-duration: 200ms;
+    margin-right: auto;
+}
+
+.project-archive-link span{
+    transition-duration: 200ms;
+}
+
+.project-archive-link:hover span {
+    padding-left: 0.5rem;
+}
+
+.project-archive-link::after {
+    content: '';  /*No content, but can add text later */
+    position: absolute; /*absolute so that it sits specifically pinned to the absolute location of x below/above the parent element of project-archive-link*/
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    bottom: 0;
+    background-color: transparent;
+    transition-duration: 200ms;
+}
+
+.project-archive-link:hover::after {
+    background: var(--color-accent);
+}
+
+.scroll-to-top {
+    text-decoration: none;
+    color: var(--color-accent);
+    background-color: var(--background-accent);
+    font-size: 2rem;
+    padding: 0 0.75rem;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    border-color: var(--color-accent);
+    border-radius: 100%;
+    overflow: hidden;
+    transition-duration: 200ms;
+}
+
+.scroll-to-top:hover {
+    opacity: 0.6;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+@media (min-width:640px) {
+    .project-card,
+    .experience-card {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card-column {
+        grid-column: span 3/ span 3;
+    }
+
+    .project-image-container {
+        order: 0;
+    }
+
+    header {
+        max-width: unset;
+    }
+
+    header h1 {
+        font-size: 3rem;
+    }
+
+    header h4 {
+        font-size: 1.4rem;
+        font-weight: 200;
+    }
+
+    header p {
+            max-width: 300px;
+    }
+
+    .social-links-container {
+        gap: 1.5rem;
+    }
+
+    .social-links-container i {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width:1024px) {
+    body {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        padding: 6 rem;
+        padding-top: 0;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        margin-left: auto;
+        height: 100vh;
+        padding-bottom: 6rem;
+    }
+
+    header h1 {
+        font-size: 3rem;
+    }
+
+    header h4 {
+        font-size: 1.4rem;
+        font-weight: 200;
+    }
+
+    header p {
+            max-width: 300px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 1;
+    }
+
+    nav a {
+        font-size: 1.5rem;
+        
+    }
+    
+    .social-links-container {
+        gap: 1.5rem;
+    }
+
+    .social-links-container i {
+        font-size: 2rem;
+    }
+
+    header,
+    main {
+        max-width: 600px;
+        width: 100%;
+        padding-top: 6rem;
+    }
+
+    main{
+        margin-right: auto;
+    }
+
+/*To make the movile version sticky header disappear and have a two column look with navigation on the left highlighting which section we are on - no need for header */
+    .sticky-header {
+        display: none;
+    }
+
+    footer {
+        grid-column: span 2/ span 2;
+        flex-direction: row; /*Was flex-direction column before so that the back to top button could sit below the footer text on mobile. Now it will be on the right for a large screen*/
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%
+    }
+}
